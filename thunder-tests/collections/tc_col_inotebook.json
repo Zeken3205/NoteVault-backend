@@ -10,6 +10,13 @@
             "containerId": "",
             "created": "2023-08-07T14:17:28.847Z",
             "sortNum": 10000
+        },
+        {
+            "_id": "07d76b87-f2e1-443b-9424-7908c420c910",
+            "name": "Notes",
+            "containerId": "",
+            "created": "2023-08-08T11:53:33.977Z",
+            "sortNum": 20000
         }
     ],
     "requests": [
@@ -20,7 +27,7 @@
             "name": "Create a new user",
             "url": "http://localhost:5000/api/auth/createuser",
             "method": "POST",
-            "sortNum": 20000,
+            "sortNum": 5000,
             "created": "2023-08-07T14:18:02.958Z",
             "modified": "2023-08-08T10:46:45.598Z",
             "headers": [
@@ -35,6 +42,49 @@
                 "raw": "{\n  \"name\":\"anshara\",\n  \"email\":\"anshara@gmail.com\",\n  \"password\":\"12345678\"\n}",
                 "form": []
             },
+            "tests": []
+        },
+        {
+            "_id": "f029af49-3fd7-4e16-adea-cf633f99e153",
+            "colId": "404388eb-1ca8-4175-bbab-dbf8a54068a0",
+            "containerId": "d1bd677a-32a8-4068-9cb5-23254df799ee",
+            "name": "User login using creds",
+            "url": "http://localhost:5000/api/auth/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-08-08T11:13:29.132Z",
+            "modified": "2023-08-08T11:20:31.812Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"anshara@gmail.com\",\n  \"password\":\"12345678\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "7bce339e-427d-44a1-8e6b-df22a2b3652a",
+            "colId": "404388eb-1ca8-4175-bbab-dbf8a54068a0",
+            "containerId": "d1bd677a-32a8-4068-9cb5-23254df799ee",
+            "name": "Get user data",
+            "url": "http://localhost:5000/api/auth/getuser",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-08-08T11:44:21.059Z",
+            "modified": "2023-08-08T11:52:28.275Z",
+            "headers": [
+                {
+                    "name": "auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRkMjFkMTVjN2ZjZWFmNDYwZmI2ZjUxIn0sImlhdCI6MTY5MTQ5NTQxNn0.dIqE1okDtwVioj38YBddPOdh-ueoFu1AdIVOjDJd4jc"
+                }
+            ],
+            "params": [],
             "tests": []
         }
     ]
