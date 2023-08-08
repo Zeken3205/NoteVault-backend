@@ -3,7 +3,7 @@ const express = require('express')
 
 connectDB();
 const app = express()
-const port = 3000
+const port = 5000
 
 //midleware
 app.use(express.json())

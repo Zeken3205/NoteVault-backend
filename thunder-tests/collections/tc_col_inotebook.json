@@ -1,0 +1,41 @@
+{
+    "_id": "404388eb-1ca8-4175-bbab-dbf8a54068a0",
+    "colName": "iNotebook",
+    "created": "2023-08-07T12:43:03.192Z",
+    "sortNum": 10000,
+    "folders": [
+        {
+            "_id": "d1bd677a-32a8-4068-9cb5-23254df799ee",
+            "name": "Authentication",
+            "containerId": "",
+            "created": "2023-08-07T14:17:28.847Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "aed406b6-e718-4f32-9e22-d91d27a304d9",
+            "colId": "404388eb-1ca8-4175-bbab-dbf8a54068a0",
+            "containerId": "d1bd677a-32a8-4068-9cb5-23254df799ee",
+            "name": "Create a new user",
+            "url": "http://localhost:5000/api/auth/createuser",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-08-07T14:18:02.958Z",
+            "modified": "2023-08-08T10:46:45.598Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"anshara\",\n  \"email\":\"anshara@gmail.com\",\n  \"password\":\"12345678\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
