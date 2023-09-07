@@ -1,11 +1,14 @@
 const connectDB = require('./db');
 const express = require('express')
-
+var cors = require('cors')
 connectDB();
 const app = express()
 const port = 5000
 
-//midleware
+
+app.use(cors())
+
+//middleware
 app.use(express.json())
 
 // Available Routes

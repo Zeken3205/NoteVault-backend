@@ -14,14 +14,15 @@ router.post('/createuser', [
     body('password', 'Enter a valid password').isLength({ min: 5 }),
 ], async (req, res) => {
     const result = validationResult(req);
+    let success = false;
     if (!result.isEmpty()) {
-        return res.send({ errors: result.array() });
+        return res.send({ success, errors: result.array() });
     }
     try {
         // Check if the user with the same email already exists
         const existingUser = await User.findOne({ email: req.body.email });
         if (existingUser) {
-            return res.status(400).json({ error: 'Email is already in use' });
+            return res.status(400).json({ success, error: 'Email is already in use' });
         }
 
         // If the email is unique
@@ -43,9 +44,11 @@ router.post('/createuser', [
             }
         };
         const authtoken = jwt.sign(data, JWT_SECRET);
-        res.json({ authtoken });
+        success = true;
+        res.json({ success, authtoken });
     } catch (error) {
-        res.status(500).json({ error: 'Failed to create user' });
+        success = false;
+        res.status(500).json({ success, error: 'Failed to create user' });
     }
 });
 
@@ -55,6 +58,7 @@ router.post('/login', [
     body('password', 'Password cannot be blank').exists(),
 ], async (req, res) => {
     const result = validationResult(req);
+    let Success = false;
     if (!result.isEmpty()) {
         return res.send({ errors: result.array() });
     }
@@ -64,13 +68,15 @@ router.post('/login', [
         // Find the user by email
         let user = await User.findOne({ email });
         if (!user) {
-            return res.status(400).json({ error: "Wrong email or password" });
+            Success = false;
+            return res.status(400).json({ Success, error: "Wrong email or password" });
         }
 
         // Compare the provided password with the hashed password stored in the database
         const passwordcompare = await bcrypt.compare(password, user.password);
         if (!passwordcompare) {
-            return res.status(400).json({ error: "Wrong email or password" });
+            Success = false;
+            return res.status(400).json({ Success, error: "Wrong email or password" });
         }
 
         // If the provided password is correct, create an authentication token (JWT) containing the user's ID
@@ -80,7 +86,8 @@ router.post('/login', [
             }
         };
         const authtoken = jwt.sign(data, JWT_SECRET);
-        res.json({ authtoken });
+        Success = true;
+        res.json({ Success, authtoken });
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
